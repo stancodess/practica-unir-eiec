@@ -12,5 +12,18 @@ python3 main.py <filename> <dup>
   filename: **ruta** al fichero que contiene la lista de palabras, una por línea
   dup: **yes|no**, yes para eliminar palabras duplicadas, no para mantener la lista
 
-###
-Se realizo la 5ta descarga.
+python3 main.py <filename> <dup> <order> 
+  
+  `filename`: **ruta** al fichero que contiene la lista de palabras, una por línea
+  
+  `dup`: **yes|no**, yes para eliminar palabras duplicadas, no para mantener la lista
+
+  `order`: Especifica el orden de la lista (`asc` para ascendente, `desc` para descendente).
+
+
+
+### Ejemplos de Uso
+
+1. **Ejecutar sin eliminar duplicados y en orden ascendente:**
+   ```bash
+   python3 main.py words.txt no asc
