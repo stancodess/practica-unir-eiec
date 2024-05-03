@@ -11,28 +11,35 @@ DEFAULT_DUPLICATES = False
 
 def sort_list(items, ascending=True, remove_duplicates=False):
     if not isinstance(items, list):
-        raise RuntimeError(f"No puede ordenar {type(items)}")
+        raise RuntimeError(f"No se puede ordenar {type(items)}")
 
     if remove_duplicates:
         items = remove_duplicates_from_list(items)
-
     return sorted(items, reverse=(not ascending))
 
 
-def remove_duplicates_from_list(items):
-    return list(set(items))
-
 
 if __name__ == "__main__":
+    if len(sys.argv) < 4:
+        print("Uso: python main.py <filename> <dup> <order>")
+        print("  <filename>: Ruta al archivo que contiene la lista de palabras.")
+        print("  <dup>: 'yes' para eliminar duplicados, 'no' para mantenerlos.")
+        print("  <order>: 'asc' para orden ascendente, 'desc' para orden descendente.")
+        sys.exit(1)
+
     filename = DEFAULT_FILENAME
     remove_duplicates = DEFAULT_DUPLICATES
+    
     if len(sys.argv) == 4:
         filename = sys.argv[1]
         remove_duplicates = sys.argv[2].lower() == "yes"
+        ascending = sys.argv[3].lower() == 'asc'
     else:
         print("Se debe indicar el fichero como primer argumento")
         print("El segundo argumento indica si se quieren eliminar duplicados")
+
         print("El tercer argumento indica si se quiere ordenar de forma ascendente o descendente")
+
         sys.exit(1)
 
     print(f"Se leerán las palabras del fichero {filename}")
